@@ -1,0 +1,10 @@
+# Python virtual environment
+venv/
+
+# Dataset directories
+chest_xray/
+
+logs/
+
+# Model files
+*.h5
