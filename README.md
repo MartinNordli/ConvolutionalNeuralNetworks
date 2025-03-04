@@ -27,7 +27,7 @@ chest_xray/
     └── PNEUMONIA/
 ```
 
-You can use the [Chest X-Ray Images (Pneumonia) dataset from Kaggle](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia) or any similarly structured dataset.
+The model was trained on the [Chest X-Ray Images (Pneumonia) dataset from Kaggle](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia) dataset.
 
 ## Requirements
 
@@ -140,21 +140,42 @@ The training process tracks and reports:
 - Recall
 - AUC (Area Under the ROC Curve)
 
-Results are saved in CSV format and visualized with matplotlib.
 
-## Project Structure
+## Results
 
-```
-.
-├── model.py          # Main implementation file
-├── README.md         # This file
-├── requirements.txt  # Dependencies
-└── logs/             # Training logs and visualizations
-    └── pneumonia_cv_gpu_optimized/
-        ├── fold_1/
-        ├── fold_2/
-        └── ...
-```
+The Convolutional Neural Network (CNN) model achieved excellent performance across all evaluation metrics. The model was validated using 5-fold cross-validation with 20 epochs and a batch size of 64.
+
+### Performance Metrics
+
+| Metric | Value | Standard Deviation |
+|--------|-------|-------------------|
+| Accuracy | 0.9395 | ±0.0097 |
+| Loss | 0.1621 | ±0.0205 |
+| Precision | 0.9792 | ±0.0133 |
+| Recall | 0.9390 | ±0.0254 |
+| AUC | 0.9858 | ±0.0059 |
+
+### Analysis
+
+The model demonstrates robust performance with a high accuracy of 93.95%, indicating strong overall classification capabilities. The precision score of 97.92% is particularly impressive, showing that when the model predicts a positive class, it is rarely incorrect.
+
+The recall value of 93.90% shows the model successfully identifies most positive instances, though there is still a small margin for improvement in detecting all positive cases. The exceptional AUC score of 0.9858 confirms the model's strong ability to distinguish between classes.
+
+The consistently low standard deviations across all metrics indicate that the model performs stably across different validation sets, suggesting good generalization capabilities.
+
+### GPU-Optimized Performance
+
+The GPU-optimized version of the model maintained consistent performance levels, demonstrating effective hardware utilization without sacrificing predictive power.
+
+### Future Improvements
+
+While the current results are excellent, potential areas for future enhancement include:
+
+1. Fine-tuning hyperparameters to potentially improve recall without sacrificing precision
+2. Experimenting with deeper architectures or alternative convolution techniques
+3. Implementing additional data augmentation strategies to further enhance generalization
+
+Overall, while the model shows promising performance, whether it's suitable for production depends on the specific application requirements. For non-critical applications, these metrics may be sufficient, but for high-stakes or safety-critical systems where errors could have significant consequences, further improvements to reach higher accuracy levels (e.g., 99%+) would be recommended before deployment.
 
 ## Notes
 
